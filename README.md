@@ -131,3 +131,84 @@ The dashboard includes the following variables for filtering:
 - `job_name`: Filter by specific job names
 - `status`: Filter by job status (completed, failed, running)
 - `interval`: Time range selection
+
+## Troubleshooting
+
+### Common Issues
+
+1. **No data appearing in Grafana**
+   - Check that the Prometheus server is running and scraping the metrics endpoint
+   - Verify that the batch job monitor script is running with `ps aux | grep batch_job_monitor`
+   - Check Prometheus targets status page for any scraping errors
+
+2. **Database errors**
+   - Ensure SQLite is properly installed
+   - Check file permissions on the database file
+   - Use the SQLite command-line tool to verify database integrity: `sqlite3 job_metrics.db .schema`
+
+3. **Missing job data**
+   - Ensure jobs are properly calling both `register_job_start` and `register_job_end`
+   - Check for error messages in the log file: `cat batch_job_monitor.log`
+
+## Advanced Configuration
+
+### Retention Policy
+
+By default, the system keeps all job data indefinitely. To implement a retention policy:
+
+1. Add a scheduled task to clean up old data:
+
+```python
+def cleanup_old_data(days=30):
+    """Delete job records older than the specified number of days"""
+    conn = sqlite3.connect(self.db_path)
+    cursor = conn.cursor()
+    
+    cutoff_date = datetime.datetime.now() - datetime.timedelta(days=days)
+    
+    cursor.execute(
+        'DELETE FROM job_metrics WHERE start_time < ?',
+        (cutoff_date,)
+    )
+    
+    deleted_count = cursor.rowcount
+    conn.commit()
+    conn.close()
+    
+    logger.info(f"Cleaned up {deleted_count} job records older than {days} days")
+```
+
+2. Call this function periodically or via a cron job.
+
+### High-Availability Setup
+
+For production environments, consider:
+
+1. Using a more robust database like PostgreSQL instead of SQLite
+2. Setting up redundant monitoring servers
+3. Implementing alerting for failed jobs or system issues
+
+## Performance Considerations
+
+- For systems with many concurrent batch jobs, consider:
+  - Increasing the database connection pool size
+  - Batching metric updates
+  - Using a dedicated metrics server
+
+- For very long-running jobs:
+  - Implement progress tracking with checkpoints
+  - Consider sending heartbeat signals during job execution
+
+## Security
+
+- The monitoring system does not implement authentication by default
+- For production use, secure the Prometheus and Grafana endpoints
+- Consider encrypting sensitive job data if needed
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

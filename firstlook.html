@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#161719" />
+  
+  <!-- Dashboard Header -->
+  <rect x="10" y="10" width="780" height="40" rx="3" fill="#161719" />
+  <text x="20" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="#ffffff">Batch Job Processing Dashboard</text>
+  <text x="350" y="35" font-family="Arial" font-size="12" fill="#999999">Last refresh: 2 minutes ago</text>
+  
+  <!-- Time Range Selector -->
+  <rect x="580" y="15" width="100" height="25" rx="3" fill="#333333" />
+  <text x="595" y="32" font-family="Arial" font-size="12" fill="#ffffff">Last 3 hours</text>
+  <polyline points="670,25 675,30 680,25" fill="none" stroke="#aaaaaa" stroke-width="2" />
+  
+  <!-- Refresh Button -->
+  <rect x="690" y="15" width="70" height="25" rx="3" fill="#3274d9" />
+  <text x="705" y="32" font-family="Arial" font-size="12" fill="#ffffff">5s</text>
+  <circle cx="730" cy="27" r="7" fill="none" stroke="#ffffff" stroke-width="1.5" />
+  <polyline points="730,22 732,27 730,32" fill="none" stroke="#ffffff" stroke-width="1.5" />
+  
+  <!-- Batch Job Duration Panel -->
+  <rect x="10" y="60" width="780" height="170" rx="3" fill="#212124" />
+  <text x="25" y="85" font-family="Arial" font-size="14" font-weight="bold" fill="#ffffff">Batch Job Duration by Job Name</text>
+  
+  <!-- Graph Panel for Duration -->
+  <rect x="25" y="95" width="750" height="120" fill="#212124" />
+  
+  <!-- Y-axis -->
+  <line x1="50" y1="95" x2="50" y2="215" stroke="#555" stroke-width="1" />
+  <text x="30" y="100" font-family="Arial" font-size="10" fill="#aaaaaa">900s</text>
+  <text x="30" y="130" font-family="Arial" font-size="10" fill="#aaaaaa">600s</text>
+  <text x="30" y="160" font-family="Arial" font-size="10" fill="#aaaaaa">300s</text>
+  <text x="30" y="215" font-family="Arial" font-size="10" fill="#aaaaaa">0s</text>
+  
+  <!-- X-axis -->
+  <line x1="50" y1="215" x2="775" y2="215" stroke="#555" stroke-width="1" />
+  <text x="50" y="230" font-family="Arial" font-size="10" fill="#aaaaaa">3h ago</text>
+  <text x="200" y="230" font-family="Arial" font-size="10" fill="#aaaaaa">2h ago</text>
+  <text x="350" y="230" font-family="Arial" font-size="10" fill="#aaaaaa">1h ago</text>
+  <text x="500" y="230" font-family="Arial" font-size="10" fill="#aaaaaa">30m ago</text>
+  <text x="650" y="230" font-family="Arial" font-size="10" fill="#aaaaaa">now</text>
+  
+  <!-- Graph Data: stacked bars for each job type -->
+  <!-- data_ingestion -->
+  <rect x="100" y="170" width="40" height="45" fill="#1f77b4" opacity="0.7" />
+  <rect x="320" y="150" width="30" height="65" fill="#1f77b4" opacity="0.7" />
+  <rect x="520" y="180" width="25" height="35" fill="#1f77b4" opacity="0.7" />
+  <rect x="700" y="175" width="35" height="40" fill="#1f77b4" opacity="0.7" />
+  
+  <!-- data_transformation -->
+  <rect x="150" y="120" width="60" height="95" fill="#ff7f0e" opacity="0.7" />
+  <rect x="370" y="140" width="50" height="75" fill="#ff7f0e" opacity="0.7" />
+  <rect x="560" y="130" width="45" height="85" fill="#ff7f0e" opacity="0.7" />
+  
+  <!-- ml_training -->
+  <rect x="230" y="100" width="70" height="115" fill="#2ca02c" opacity="0.7" />
+  <rect x="430" y="110" width="65" height="105" fill="#2ca02c" opacity="0.7" />
+  <rect x="620" y="105" width="60" height="110" fill="#2ca02c" opacity="0.7" />
+  
+  <!-- report_generation -->
+  <rect x="270" y="160" width="30" height="55" fill="#d62728" opacity="0.7" />
+  <rect x="500" y="145" width="25" height="70" fill="#d62728" opacity="0.7" />
+  <rect x="680" y="150" width="20" height="65" fill="#d62728" opacity="0.7" />
+  
+  <!-- data_cleanup -->
+  <rect x="80" y="195" width="20" height="20" fill="#9467bd" opacity="0.7" />
+  <rect x="300" y="185" width="15" height="30" fill="#9467bd" opacity="0.7" />
+  <rect x="480" y="190" width="18" height="25" fill="#9467bd" opacity="0.7" />
+  <rect x="740" y="195" width="15" height="20" fill="#9467bd" opacity="0.7" />
+  
+  <!-- Legend -->
+  <rect x="600" y="95" width="12" height="12" fill="#1f77b4" />
+  <text x="615" y="105" font-family="Arial" font-size="10" fill="#ffffff">data_ingestion</text>
+  
+  <rect x="600" y="115" width="12" height="12" fill="#ff7f0e" />
+  <text x="615" y="125" font-family="Arial" font-size="10" fill="#ffffff">data_transformation</text>
+  
+  <rect x="600" y="135" width="12" height="12" fill="#2ca02c" />
+  <text x="615" y="145" font-family="Arial" font-size="10" fill="#ffffff">ml_training</text>
+  
+  <rect x="600" y="155" width="12" height="12" fill="#d62728" />
+  <text x="615" y="165" font-family="Arial" font-size="10" fill="#ffffff">report_generation</text>
+  
+  <rect x="600" y="175" width="12" height="12" fill="#9467bd" />
+  <text x="615" y="185" font-family="Arial" font-size="10" fill="#ffffff">data_cleanup</text>
+  
+  <!-- Timeline Panel -->
+  <rect x="10" y="240" width="780" height="170" rx="3" fill="#212124" />
+  <text x="25" y="265" font-family="Arial" font-size="14" font-weight="bold" fill="#ffffff">Batch Job Timeline (Horizontal bars show duration, vertical axis shows job names)</text>
+  
+  <!-- Y-axis: Job Names -->
+  <text x="25" y="295" font-family="Arial" font-size="11" fill="#ffffff">data_ingestion</text>
+  <text x="25" y="325" font-family="Arial" font-size="11" fill="#ffffff">data_transformation</text>
+  <text x="25" y="355" font-family="Arial" font-size="11" fill="#ffffff">ml_training</text>
+  <text x="25" y="385" font-family="Arial" font-size="11" fill="#ffffff">report_generation</text>
+  <text x="25" y="415" font-family="Arial" font-size="11" fill="#ffffff">data_cleanup</text>
+  
+  <!-- X-axis -->
+  <line x1="150" y1="425" x2="775" y2="425" stroke="#555" stroke-width="1" />
+  <text x="150" y="440" font-family="Arial" font-size="10" fill="#aaaaaa">3h ago</text>
+  <text x="270" y="440" font-family="Arial" font-size="10" fill="#aaaaaa">2h ago</text>
+  <text x="390" y="440" font-family="Arial" font-size="10" fill="#aaaaaa">1h ago</text>
+  <text x="510" y="440" font-family="Arial" font-size="10" fill="#aaaaaa">30m ago</text>
+  <text x="630" y="440" font-family="Arial" font-size="10" fill="#aaaaaa">15m ago</text>
+  <text x="750" y="440" font-family="Arial" font-size="10" fill="#aaaaaa">now</text>
+  
+  <!-- Timeline Bars -->
+  <!-- data_ingestion jobs -->
+  <rect x="180" y="290" width="70" height="10" rx="2" fill="#3eb367" />
+  <rect x="400" y="290" width="50" height="10" rx="2" fill="#3eb367" />
+  <rect x="610" y="290" width="80" height="10" rx="2" fill="#3eb367" />
+  <rect x="730" y="290" width="30" height="10" rx="2" fill="#3274d9" />
+  
+  <!-- data_transformation jobs -->
+  <rect x="220" y="320" width="120" height="10" rx="2" fill="#3eb367" />
+  <rect x="460" y="320" width="90" height="10" rx="2" fill="#3eb367" />
+  <rect x="670" y="320" width="60" height="10" rx="2" fill="#3274d9" />
+  
+  <!-- ml_training jobs -->
+  <rect x="160" y="350" width="140" height="10" rx="2" fill="#e24d42" />
+  <rect x="370" y="350" width="130" height="10" rx="2" fill="#3eb367" />
+  <rect x="580" y="350" width="120" height="10" rx="2" fill="#3eb367" />
+  
+  <!-- report_generation jobs -->
+  <rect x="320" y="380" width="60" height="10" rx="2" fill="#3eb367" />
+  <rect x="550" y="380" width="50" height="10" rx="2" fill="#e24d42" />
+  <rect x="700" y="380" width="40" height="10" rx="2" fill="#3274d9" />
+  
+  <!-- data_cleanup jobs -->
+  <rect x="150" y="410" width="40" height="10" rx="2" fill="#3eb367" />
+  <rect x="370" y="410" width="30" height="10" rx="2" fill="#3eb367" />
+  <rect x="520" y="410" width="35" height="10" rx="2" fill="#3eb367" />
+  <rect x="720" y="410" width="30" height="10" rx="2" fill="#3eb367" />
+  
+  <!-- Recent Jobs Table -->
+  <rect x="10" y="420" width="780" height="170" rx="3" fill="#212124" />
+  <text x="25" y="445" font-family="Arial" font-size="14" font-weight="bold" fill="#ffffff">Recent Batch Jobs</text>
+  
+  <!-- Table Headers -->
+  <rect x="25" y="455" width="750" height="25" fill="#333333" />
+  <text x="40" y="473" font-family="Arial" font-size="12" font-weight="bold" fill="#dddddd">Job Name</text>
+  <text x="220" y="473" font-family="Arial" font-size="12" font-weight="bold" fill="#dddddd">Start Time</text>
+  <text x="380" y="473" font-family="Arial" font-size="12" font-weight="bold" fill="#dddddd">Duration</text>
+  <text x="580" y="473" font-family="Arial" font-size="12" font-weight="bold" fill="#dddddd">Status</text>
+  
+  <!-- Table Rows -->
+  <rect x="25" y="480" width="750" height="30" fill="#292929" />
+  <text x="40" y="500" font-family="Arial" font-size="11" fill="#ffffff">ml_training</text>
+  <text x="220" y="500" font-family="Arial" font-size="11" fill="#ffffff">10:15:28</text>
+  <rect x="380" y="495" width="100" height="6" rx="3" fill="#333333" />
+  <rect x="380" y="495" width="85" height="6" rx="3" fill="#2ca02c" />
+  <text x="490" y="500" font-family="Arial" font-size="11" fill="#ffffff">512s</text>
+  <rect x="580" y="490" width="70" height="18" rx="3" fill="#3eb36730" />
+  <text x="595" y="503" font-family="Arial" font-size="11" fill="#3eb367">completed</text>
+  
+  <rect x="25" y="510" width="750" height="30" fill="#1f1f1f" />
+  <text x="40" y="530" font-family="Arial" font-size="11" fill="#ffffff">report_generation</text>
+  <text x="220" y="530" font-family="Arial" font-size="11" fill="#ffffff">10:20:45</text>
+  <rect x="380" y="525" width="100"
