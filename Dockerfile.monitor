@@ -2,12 +2,21 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install required system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy the application code
+# Install Python dependencies directly based on the error message parameters
+RUN pip install --no-cache-dir pandas prometheus-client requests
+
+# Copy the application code and adapter script
 COPY batch_job_monitor.py .
+COPY adapter.sh .
+
+# Make the adapter script executable
+RUN chmod +x adapter.sh
 
 # Create data directory for SQLite database
 RUN mkdir -p /app/data
@@ -17,7 +26,6 @@ EXPOSE 8000
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
-ENV DB_PATH=/app/data/job_metrics.db
 
-# Run the batch job monitor
-CMD ["python", "batch_job_monitor.py", "--db-path", "/app/data/job_metrics.db", "--port", "8000"]
+# Run the batch job monitor with the correct parameters
+CMD ["./adapter.sh"]

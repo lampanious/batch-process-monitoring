@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile.monitor
     container_name: batch-job-monitor
     ports:
-      - "8000:8000"
+      - "8000:9876"
     volumes:
       - ./data:/app/data
     restart: unless-stopped
@@ -20,7 +20,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
